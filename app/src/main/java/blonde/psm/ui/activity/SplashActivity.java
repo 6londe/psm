@@ -1,9 +1,11 @@
-package blonde.psm;
+package blonde.psm.ui.activity;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import blonde.psm.R;
 
 public class SplashActivity extends AppCompatActivity {
 

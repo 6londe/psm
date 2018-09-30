@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="#FFF"
+    android:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.45"
+        android:weightSum="1">
+
+        <!-- Platform Button ID : "platform_ + enum value of platform" -->
+
+        <blonde.psm.ui.view.PlatformButton
+            android:id="@+id/platform_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="#EEE"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="PS3" />
+
+        <blonde.psm.ui.view.PlatformButton
+            android:id="@+id/platform_4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="#BBB"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="PS4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.45"
+        android:weightSum="1">
+
+        <blonde.psm.ui.view.PlatformButton
+            android:id="@+id/platform_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="#CCC"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="PS VITA" />
+
+        <blonde.psm.ui.view.PlatformButton
+            android:id="@+id/platform_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="#AAA"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="PS VR" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/platform_select"
+        android:text="OK"
+        android:background="#ABB"
+        android:layout_weight="0.1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+</LinearLayout>
