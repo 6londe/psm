@@ -1,4 +1,4 @@
-package blonde.psm.ui.dialog;
+package blonde.psm.view.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -14,9 +14,9 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 import blonde.psm.R;
-import blonde.psm.db.DataImporter;
-import blonde.psm.enums.Platform;
-import blonde.psm.ui.view.PlatformButton;
+import blonde.psm.model.helper.ImportHelper;
+import blonde.psm.model.enums.Platform;
+import blonde.psm.view.customview.PlatformButton;
 
 public class PlatformDialog extends Dialog {
 
@@ -28,7 +28,6 @@ public class PlatformDialog extends Dialog {
     public PlatformDialog(final Context context) {
 
         super(context);
-
         this.mContext = context;
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -61,8 +60,8 @@ public class PlatformDialog extends Dialog {
     }
 
     private void importData(Platform platform) {
-        DataImporter dataImporter = new DataImporter(mContext);
-        if(!dataImporter.importData(platform)) {
+        ImportHelper importHelper = new ImportHelper(mContext);
+        if(!importHelper.importData(platform)) {
             Log.e(TAG, "Failed to import data");
         }
     }

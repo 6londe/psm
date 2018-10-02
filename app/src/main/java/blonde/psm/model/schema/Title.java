@@ -1,7 +1,7 @@
-package blonde.psm.db.schema;
+package blonde.psm.model.schema;
 
-import blonde.psm.enums.Genre;
-import blonde.psm.enums.Platform;
+import blonde.psm.model.enums.Genre;
+import blonde.psm.model.enums.Platform;
 
 public class Title {
 

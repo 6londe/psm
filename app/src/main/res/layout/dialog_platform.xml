@@ -15,7 +15,7 @@
 
         <!-- Platform Button ID : "platform_ + enum value of platform" -->
 
-        <blonde.psm.ui.view.PlatformButton
+        <blonde.psm.view.customview.PlatformButton
             android:id="@+id/platform_3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -25,7 +25,7 @@
             android:textAlignment="center"
             android:text="PS3" />
 
-        <blonde.psm.ui.view.PlatformButton
+        <blonde.psm.view.customview.PlatformButton
             android:id="@+id/platform_4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -42,7 +42,7 @@
         android:layout_weight="0.45"
         android:weightSum="1">
 
-        <blonde.psm.ui.view.PlatformButton
+        <blonde.psm.view.customview.PlatformButton
             android:id="@+id/platform_1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -52,7 +52,7 @@
             android:textAlignment="center"
             android:text="PS VITA" />
 
-        <blonde.psm.ui.view.PlatformButton
+        <blonde.psm.view.customview.PlatformButton
             android:id="@+id/platform_2"
             android:layout_width="0dp"
             android:layout_height="match_parent"

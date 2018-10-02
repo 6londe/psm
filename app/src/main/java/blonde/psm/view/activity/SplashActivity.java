@@ -1,4 +1,4 @@
-package blonde.psm.ui.activity;
+package blonde.psm.view.activity;
 
 import android.content.Intent;
 import android.os.Handler;

@@ -1,4 +1,4 @@
-package blonde.psm.enums;
+package blonde.psm.model.enums;
 
 public enum Genre {
 

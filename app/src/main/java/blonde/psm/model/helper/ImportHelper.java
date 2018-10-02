@@ -1,4 +1,4 @@
-package blonde.psm.db;
+package blonde.psm.model.helper;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,19 +8,19 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-import blonde.psm.db.schema.Title;
-import blonde.psm.enums.Genre;
-import blonde.psm.enums.Platform;
+import blonde.psm.model.schema.Title;
+import blonde.psm.model.enums.Genre;
+import blonde.psm.model.enums.Platform;
 
-public class DataImporter {
+public class ImportHelper {
 
     private Context mContext;
-    private DatabaseHelper databaseHelper;
-    private static String TAG = DataImporter.class.getSimpleName();
+    private SQLiteHelper SQLiteHelper;
+    private static String TAG = ImportHelper.class.getSimpleName();
 
-    public DataImporter(Context context) {
+    public ImportHelper(Context context) {
         this.mContext = context;
-        this.databaseHelper = new DatabaseHelper(context);
+        this.SQLiteHelper = new SQLiteHelper(context);
     }
 
     public boolean importData(Platform platform) {
@@ -43,7 +43,7 @@ public class DataImporter {
                 int date = Integer.parseInt(tokens.nextToken());
 
                 Title title = new Title(platform, name, genre, publisher, date);
-                databaseHelper.setTitle(title);
+                SQLiteHelper.setTitle(title);
             }
 
             Log.e(TAG, "Data Imported: " + platform);

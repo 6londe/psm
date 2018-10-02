@@ -1,4 +1,4 @@
-package blonde.psm.ui.view;
+package blonde.psm.view.customview;
 
 import android.content.Context;
 import android.graphics.Color;
