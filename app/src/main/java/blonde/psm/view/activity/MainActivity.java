@@ -1,16 +1,16 @@
 package blonde.psm.view.activity;
 
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 import blonde.psm.BuildConfig;
 import blonde.psm.R;
+import blonde.psm.view.base.BaseActivity;
 import blonde.psm.view.dialog.CreateDialog;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     static SharedPreferences sharedPreferences = null;
 
@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         checkFirstRun();
-        showCreateDialog();
     }
 
     private void checkFirstRun() {

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <ImageButton
+        android:id="@+id/actionbar_logo"
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        android:gravity="start"
+        android:background="@android:color/transparent" />
+
+    <View
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/actionbar_search_icon"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@raw/baseline_search_black_18dp"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/transparent" />
+
+        <ImageButton
+            android:id="@+id/actionbar_settings_icon"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@raw/baseline_settings_black_18dp"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/transparent" />
+
+    </LinearLayout>
+
+</LinearLayout>

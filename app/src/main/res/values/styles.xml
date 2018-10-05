@@ -16,10 +16,20 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <!-- No Actionbar + FullScreen -->
+    <!-- No ActionBar + FullScreen -->
     <style name="AppTheme.NoActionBar.FullScreen" parent="AppTheme.NoActionBar">
         <item name="android:colorBackground">@android:color/white</item>
         <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!-- Custom ActionBar -->
+    <style name="CustomActionBar" parent="Theme.AppCompat.Light">
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetEnd">0dp</item>
+        <item name="android:statusBarColor">@android:color/white</item>
+        <item name="android:background">@android:color/white</item>
     </style>
 
 </resources>
