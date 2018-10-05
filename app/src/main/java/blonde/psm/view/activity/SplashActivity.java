@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import blonde.psm.R;
+import blonde.psm.view.activity.main.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

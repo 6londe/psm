@@ -1,4 +1,4 @@
-package blonde.psm.view.activity;
+package blonde.psm.view.activity.main;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.view.WindowManager;
 import blonde.psm.BuildConfig;
 import blonde.psm.R;
 import blonde.psm.view.base.BaseActivity;
-import blonde.psm.view.dialog.CreateDialog;
 
 public class MainActivity extends BaseActivity {
 
@@ -47,20 +46,5 @@ public class MainActivity extends BaseActivity {
         }
 
         sharedPreferences.edit().putInt(VERSION_CODE, currentVersionCode).apply();
-    }
-
-    private void showCreateDialog() {
-
-        DisplayMetrics displayMetrics = getApplicationContext().getResources().getDisplayMetrics();
-        int width = displayMetrics.widthPixels;
-        int height = displayMetrics.heightPixels;
-
-        CreateDialog createDialog = new CreateDialog(this);
-        WindowManager.LayoutParams windowManager = createDialog.getWindow().getAttributes();
-        windowManager.copyFrom(createDialog.getWindow().getAttributes());
-        windowManager.width = width * 3 / 4;
-        windowManager.height = height / 2;
-
-        createDialog.show();
     }
 }

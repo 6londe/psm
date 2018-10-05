@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import blonde.psm.R;
-import blonde.psm.view.activity.MainActivity;
-import blonde.psm.view.activity.SearchActivity;
+import blonde.psm.view.activity.main.MainActivity;
+import blonde.psm.view.activity.search.SearchActivity;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -24,7 +24,7 @@ public class BaseActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
-        getSupportActionBar().setCustomView(R.layout.custom_actionbar);
+        getSupportActionBar().setCustomView(R.layout.action_bar);
 
         View actionBar = getSupportActionBar().getCustomView();
 
@@ -51,6 +51,10 @@ public class BaseActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
 
     }
 }

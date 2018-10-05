@@ -21,11 +21,11 @@
         </activity>
 
         <activity
-            android:name=".view.activity.MainActivity"
+            android:name=".view.activity.main.MainActivity"
             android:theme="@style/CustomActionBar"/>
 
         <activity
-            android:name=".view.activity.SearchActivity"
+            android:name=".view.activity.search.SearchActivity"
             android:theme="@style/CustomActionBar"/>
 
     </application>
