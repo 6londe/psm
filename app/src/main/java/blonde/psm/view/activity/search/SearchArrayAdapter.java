@@ -1,6 +1,7 @@
 package blonde.psm.view.activity.search;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,27 +16,25 @@ import blonde.psm.R;
 
 public class SearchArrayAdapter extends ArrayAdapter<SearchRow> {
 
-    private Context mContext;
-    private ArrayList<SearchRow> searchRows, filteredRows, searchRowsAll;
+    private ArrayList<SearchRow> searchRows, filteredRows, unfilteredRows;
 
     SearchArrayAdapter(Context context, ArrayList<SearchRow> rows) {
         super(context, android.R.layout.simple_list_item_1, rows);
 
-        this.mContext = context;
         this.searchRows = rows;
         this.filteredRows = new ArrayList<>(rows);
-        this.searchRowsAll = new ArrayList<>(rows);
+        this.unfilteredRows = new ArrayList<>(rows);
     }
 
-    @Override
-    public SearchRow getItem(int position) {
-        return searchRows.get(position);
-    }
-
-    @Override
-    public int getCount() {
-        return searchRows.size();
-    }
+//    @Override
+//    public SearchRow getItem(int position) {
+//        return searchRows.get(position);
+//    }
+//
+//    @Override
+//    public int getCount() {
+//        return searchRows.size();
+//    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -43,17 +42,16 @@ public class SearchArrayAdapter extends ArrayAdapter<SearchRow> {
         View view = convertView;
 
         if (view == null) {
-            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.search_row, parent, false);
-
-            ImageView titleImage = view.findViewById(R.id.row_title_image);
-            if (titleImage != null)
-                titleImage.setImageResource(searchRows.get(position).getTitleImage());
-
-            TextView titleName = view.findViewById(R.id.row_title_name);
-            if (titleName != null)
-                titleName.setText(searchRows.get(position).getTitleName());
+            view = LayoutInflater.from(getContext()).inflate(R.layout.search_row, parent, false);
         }
+
+        ImageView titleImage = view.findViewById(R.id.row_title_image);
+        if (titleImage != null)
+            titleImage.setImageResource(searchRows.get(position).getTitleImage());
+
+        TextView titleName = view.findViewById(R.id.row_title_name);
+        if (titleName != null)
+            titleName.setText(searchRows.get(position).getTitleName());
 
         return view;
     }
@@ -77,13 +75,13 @@ public class SearchArrayAdapter extends ArrayAdapter<SearchRow> {
 
             ArrayList<SearchRow> filteredList = (ArrayList<SearchRow>) results.values;
 
-            if (results != null && results.count > 0) {
+            if (results.count > 0) {
                 clear();
 
                 for (SearchRow sr : filteredList) {
                     add(sr);
-                    notifyDataSetChanged();
                 }
+                notifyDataSetChanged();
             }
             else {
                 clear();
@@ -99,8 +97,9 @@ public class SearchArrayAdapter extends ArrayAdapter<SearchRow> {
             if (constraint != null) {
 
                 filteredRows.clear();
-                for (SearchRow sr : searchRowsAll) {
-                    if (sr.getTitleName().toLowerCase().contains(constraint.toString().toLowerCase())) {
+
+                for (SearchRow sr : unfilteredRows) {
+                    if (sr.getTitleName().toLowerCase().startsWith(constraint.toString().toLowerCase())) {
                         filteredRows.add(sr);
                     }
                 }
