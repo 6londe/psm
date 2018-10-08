@@ -1,4 +1,4 @@
-package blonde.psm.view.activity.search;
+package blonde.psm.view.search;
 
 import blonde.psm.R;
 

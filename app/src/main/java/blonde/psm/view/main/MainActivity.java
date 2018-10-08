@@ -1,9 +1,10 @@
-package blonde.psm.view.activity.main;
+package blonde.psm.view.main;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.WindowManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 
 import blonde.psm.BuildConfig;
 import blonde.psm.R;
@@ -12,11 +13,17 @@ import blonde.psm.view.base.BaseActivity;
 public class MainActivity extends BaseActivity {
 
     static SharedPreferences sharedPreferences = null;
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.main_frame, new MainGridFragment());
+        fragmentTransaction.commit();
 
         checkFirstRun();
     }
@@ -46,5 +53,13 @@ public class MainActivity extends BaseActivity {
         }
 
         sharedPreferences.edit().putInt(VERSION_CODE, currentVersionCode).apply();
+    }
+
+    private void switchFragment(boolean isGrid) {
+
+        Fragment fragment = isGrid ? new MainGridFragment() : new MainListFragment();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.main_frame, fragment);
+        fragmentTransaction.commit();
     }
 }

@@ -1,8 +1,7 @@
-package blonde.psm.view.activity.search;
+package blonde.psm.view.search;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

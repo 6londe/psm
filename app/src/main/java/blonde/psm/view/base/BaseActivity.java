@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import blonde.psm.R;
-import blonde.psm.view.activity.main.MainActivity;
-import blonde.psm.view.activity.search.SearchActivity;
+import blonde.psm.view.main.MainActivity;
+import blonde.psm.view.search.SearchActivity;
 
 public class BaseActivity extends AppCompatActivity {
 

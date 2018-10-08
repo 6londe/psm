@@ -1,4 +1,4 @@
-package blonde.psm.view.custom;
+package blonde.psm.view.search;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -12,9 +12,9 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import blonde.psm.R;
-import blonde.psm.view.activity.search.SearchActivity;
+import blonde.psm.view.search.SearchActivity;
 
-public class CustomAutoCompleteTextView extends AppCompatAutoCompleteTextView implements TextWatcher, View.OnTouchListener, View.OnFocusChangeListener {
+public class SearchAutoCompleteTextView extends AppCompatAutoCompleteTextView implements TextWatcher, View.OnTouchListener, View.OnFocusChangeListener {
 
     private Drawable clearDrawable;
     private Drawable backDrawable;
@@ -22,22 +22,22 @@ public class CustomAutoCompleteTextView extends AppCompatAutoCompleteTextView im
     private OnTouchListener onTouchListener;
     private SearchActivity.OnBackPressed onBackPressedCallback;
 
-    public CustomAutoCompleteTextView(Context context) {
+    public SearchAutoCompleteTextView(Context context) {
         super(context);
         initView();
     }
 
-    public CustomAutoCompleteTextView(Context context, AttributeSet attrs) {
+    public SearchAutoCompleteTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView();
     }
 
-    public CustomAutoCompleteTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SearchAutoCompleteTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView();
     }
 
-    public CustomAutoCompleteTextView(Context context, SearchActivity.OnBackPressed onBackPressedCallback) {
+    public SearchAutoCompleteTextView(Context context, SearchActivity.OnBackPressed onBackPressedCallback) {
         super(context);
         initView();
         this.onBackPressedCallback = onBackPressedCallback;

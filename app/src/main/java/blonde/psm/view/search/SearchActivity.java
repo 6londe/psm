@@ -1,4 +1,4 @@
-package blonde.psm.view.activity.search;
+package blonde.psm.view.search;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 
 import blonde.psm.R;
 import blonde.psm.model.helper.FirebaseWrapper;
-import blonde.psm.view.custom.CustomAutoCompleteTextView;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -29,26 +28,26 @@ public class SearchActivity extends AppCompatActivity {
         LinearLayout linearLayout = findViewById(R.id.search_activity_layout);
         int dp = (int) getResources().getDisplayMetrics().density;
 
-        CustomAutoCompleteTextView customAutoCompleteTextView = new CustomAutoCompleteTextView(this, new OnBackPressed() {
+        SearchAutoCompleteTextView searchAutoCompleteTextView = new SearchAutoCompleteTextView(this, new OnBackPressed() {
             @Override
             public void OnBackPressedCallback() {
                 hideKeyboard();
                 ((Activity) mContext).onBackPressed();
             }
         });
-        customAutoCompleteTextView.setBackground(getResources().getDrawable(R.drawable.custom_search_bar));
+        searchAutoCompleteTextView.setBackground(getResources().getDrawable(R.drawable.custom_search_bar));
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 40*dp);
         layoutParams.setMargins(10*dp, 15*dp, 10*dp, 10*dp);
-        customAutoCompleteTextView.setLayoutParams(layoutParams);
-        customAutoCompleteTextView.setPadding(10*dp, 5*dp, 10*dp, 5*dp);
-        customAutoCompleteTextView.setMaxLines(1);
-        customAutoCompleteTextView.setSingleLine();
-        customAutoCompleteTextView.setThreshold(1);
-        customAutoCompleteTextView.setCompoundDrawablePadding(10*dp);
-        linearLayout.addView(customAutoCompleteTextView);
+        searchAutoCompleteTextView.setLayoutParams(layoutParams);
+        searchAutoCompleteTextView.setPadding(10*dp, 5*dp, 10*dp, 5*dp);
+        searchAutoCompleteTextView.setMaxLines(1);
+        searchAutoCompleteTextView.setSingleLine();
+        searchAutoCompleteTextView.setThreshold(1);
+        searchAutoCompleteTextView.setCompoundDrawablePadding(10*dp);
+        linearLayout.addView(searchAutoCompleteTextView);
 
-        customAutoCompleteTextView.setAdapter(new SearchArrayAdapter(this, firebaseWrapper.getSearchRows()));
-        customAutoCompleteTextView.requestFocus();
+        searchAutoCompleteTextView.setAdapter(new SearchArrayAdapter(this, firebaseWrapper.getSearchRows()));
+        searchAutoCompleteTextView.requestFocus();
 
         showKeyboard();
     }

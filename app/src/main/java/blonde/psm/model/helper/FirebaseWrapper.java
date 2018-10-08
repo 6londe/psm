@@ -2,7 +2,7 @@ package blonde.psm.model.helper;
 
 import java.util.ArrayList;
 
-import blonde.psm.view.activity.search.SearchRow;
+import blonde.psm.view.search.SearchRow;
 
 public class FirebaseWrapper {
 

@@ -8,10 +8,10 @@
     android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.search.SearchActivity">
+    tools:context=".view.search.SearchActivity">
 
     <!--
-    <blonde.psm.view.custom.CustomAutoCompleteTextView
+    <blonde.psm.view.search.CustomAutoCompleteTextView
         android:id="@+id/title_search"
         android:background="@drawable/custom_search_bar"
         android:layout_width="match_parent"
