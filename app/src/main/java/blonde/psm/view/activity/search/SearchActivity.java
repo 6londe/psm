@@ -56,19 +56,13 @@ public class SearchActivity extends AppCompatActivity {
     public void showKeyboard() {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         View v = getCurrentFocus();
-        if (v != null) {
-            inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
-        }
+        if (v != null) inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
     }
 
     public void hideKeyboard() {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-        //Find the currently focused view, so we can grab the correct window token from it.
         View view = getCurrentFocus();
-        //If no view currently has focus, create a new one, just so we can grab a window token from it
-        if (view == null) {
-            view = new View(this);
-        }
+        if (view == null) view = new View(this);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 

@@ -14,6 +14,7 @@ public class SearchFilter extends Filter {
         this.filteredRows = new ArrayList<>(rows);
         this.unfilteredRows = new ArrayList<>(rows);
     }
+
     @Override
     public CharSequence convertResultToString(Object resultValue) {
         SearchRow sr = (SearchRow) resultValue;

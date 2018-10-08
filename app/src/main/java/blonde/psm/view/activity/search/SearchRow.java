@@ -11,7 +11,7 @@ public class SearchRow {
 
         // FIXME
         //this.titleImage = titleImage;
-        this.titleImage = R.raw.baseline_broken_image_black_18dp;
+        this.titleImage = R.drawable.ic_broken_image_black_24dp;
 
         this.titleName = titleName;
     }
