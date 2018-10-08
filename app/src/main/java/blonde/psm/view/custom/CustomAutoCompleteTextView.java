@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import blonde.psm.R;
+import blonde.psm.view.activity.search.SearchActivity;
 
 public class CustomAutoCompleteTextView extends AppCompatAutoCompleteTextView implements TextWatcher, View.OnTouchListener, View.OnFocusChangeListener {
 
@@ -19,21 +20,27 @@ public class CustomAutoCompleteTextView extends AppCompatAutoCompleteTextView im
     private Drawable backDrawable;
     private OnFocusChangeListener onFocusChangeListener;
     private OnTouchListener onTouchListener;
-    private Context mContext;
+    private SearchActivity.OnBackPressed onBackPressedCallback;
 
     public CustomAutoCompleteTextView(Context context) {
         super(context);
-        initView(context);
+        initView();
     }
 
     public CustomAutoCompleteTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initView(context);
+        initView();
     }
 
     public CustomAutoCompleteTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initView(context);
+        initView();
+    }
+
+    public CustomAutoCompleteTextView(Context context, SearchActivity.OnBackPressed onBackPressedCallback) {
+        super(context);
+        initView();
+        this.onBackPressedCallback = onBackPressedCallback;
     }
 
     @Override public void setOnFocusChangeListener(OnFocusChangeListener onFocusChangeListener) {
@@ -44,9 +51,7 @@ public class CustomAutoCompleteTextView extends AppCompatAutoCompleteTextView im
         this.onTouchListener = onTouchListener;
     }
 
-    private void initView(Context context) {
-
-        mContext = context;
+    private void initView() {
 
         Drawable tempClearDrawable = ContextCompat.getDrawable(getContext(), R.drawable.clear_button);
         clearDrawable = DrawableCompat.wrap(tempClearDrawable);
@@ -85,7 +90,7 @@ public class CustomAutoCompleteTextView extends AppCompatAutoCompleteTextView im
         }
 
         if (x < getPaddingLeft() + backDrawable.getIntrinsicWidth()) {
-
+            this.onBackPressedCallback.OnBackPressedCallback();
         }
 
         if (onTouchListener != null) return onTouchListener.onTouch(view, motionEvent);
