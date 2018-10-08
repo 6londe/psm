@@ -90,7 +90,7 @@ public class SearchArrayAdapter extends ArrayAdapter<SearchRow> {
                 filteredRows.clear();
 
                 for (SearchRow sr : unfilteredRows) {
-                    if (sr.getTitleName().toLowerCase().contains(constraint.toString().toLowerCase())) {
+                    if (sr.getTitleName().toLowerCase().startsWith(constraint.toString().toLowerCase())) {
                         filteredRows.add(sr);
                     }
                 }

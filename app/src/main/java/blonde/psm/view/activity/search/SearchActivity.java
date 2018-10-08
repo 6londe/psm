@@ -4,11 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AutoCompleteTextView;
+import android.widget.LinearLayout;
 
 import blonde.psm.R;
 import blonde.psm.model.helper.FirebaseWrapper;
+import blonde.psm.view.custom.CustomAutoCompleteTextView;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -21,9 +23,25 @@ public class SearchActivity extends AppCompatActivity {
 
         firebaseWrapper = new FirebaseWrapper();
 
-        AutoCompleteTextView searchTextView = findViewById(R.id.title_search);
-        searchTextView.setAdapter(new SearchArrayAdapter(this, firebaseWrapper.getSearchRows()));
-        searchTextView.requestFocus();
+        LinearLayout linearLayout = findViewById(R.id.search_activity_layout);
+
+        int dp = (int) getResources().getDisplayMetrics().density;
+
+        CustomAutoCompleteTextView customAutoCompleteTextView = new CustomAutoCompleteTextView(this);
+        customAutoCompleteTextView.setBackground(getResources().getDrawable(R.drawable.custom_search_bar));
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 40*dp);
+        layoutParams.setMargins(10*dp, 15*dp, 10*dp, 10*dp);
+        customAutoCompleteTextView.setLayoutParams(layoutParams);
+        customAutoCompleteTextView.setPadding(10*dp, 5*dp, 10*dp, 5*dp);
+        customAutoCompleteTextView.setMaxLines(1);
+        customAutoCompleteTextView.setSingleLine();
+        customAutoCompleteTextView.setThreshold(1);
+        linearLayout.addView(customAutoCompleteTextView);
+
+        //CustomAutoCompleteTextView searchTextView = findViewById(R.id.title_search);
+        customAutoCompleteTextView.setAdapter(new SearchArrayAdapter(this, firebaseWrapper.getSearchRows()));
+        customAutoCompleteTextView.requestFocus();
 
         showKeyboard();
     }
