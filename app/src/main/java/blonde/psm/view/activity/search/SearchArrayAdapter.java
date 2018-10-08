@@ -1,6 +1,7 @@
 package blonde.psm.view.activity.search;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,18 +27,8 @@ public class SearchArrayAdapter extends ArrayAdapter<SearchRow> {
         this.unfilteredRows = new ArrayList<>(rows);
     }
 
-//    @Override
-//    public SearchRow getItem(int position) {
-//        return searchRows.get(position);
-//    }
-//
-//    @Override
-//    public int getCount() {
-//        return searchRows.size();
-//    }
-
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public @NonNull View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
         View view = convertView;
 
@@ -57,7 +48,7 @@ public class SearchArrayAdapter extends ArrayAdapter<SearchRow> {
     }
 
     @Override
-    public Filter getFilter() {
+    public @NonNull Filter getFilter() {
         return searchFilter;
     }
 
@@ -99,7 +90,7 @@ public class SearchArrayAdapter extends ArrayAdapter<SearchRow> {
                 filteredRows.clear();
 
                 for (SearchRow sr : unfilteredRows) {
-                    if (sr.getTitleName().toLowerCase().startsWith(constraint.toString().toLowerCase())) {
+                    if (sr.getTitleName().toLowerCase().contains(constraint.toString().toLowerCase())) {
                         filteredRows.add(sr);
                     }
                 }

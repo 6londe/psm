@@ -27,6 +27,7 @@ public class BaseActivity extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.action_bar);
 
         View actionBar = getSupportActionBar().getCustomView();
+        getSupportActionBar().setElevation(0f);
 
         ImageButton logoButton = actionBar.findViewById(R.id.actionbar_logo);
         logoButton.setOnClickListener(new View.OnClickListener() {

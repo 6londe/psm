@@ -7,7 +7,7 @@
 
     <ImageButton
         android:id="@+id/actionbar_logo"
-        android:padding="5dp"
+        android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@raw/baseline_crop_square_black_18dp"
@@ -27,7 +27,7 @@
 
         <ImageButton
             android:id="@+id/actionbar_search_icon"
-            android:padding="5dp"
+            android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@raw/baseline_search_black_18dp"

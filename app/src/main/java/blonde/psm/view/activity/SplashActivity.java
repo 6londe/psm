@@ -10,7 +10,7 @@ import blonde.psm.view.activity.main.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIMEOUT = 800;
+    private static final int SPLASH_TIMEOUT = 800;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

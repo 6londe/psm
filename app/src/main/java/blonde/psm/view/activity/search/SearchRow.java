@@ -9,11 +9,11 @@ public class SearchRow {
 
     public SearchRow(int titleImage, String titleName) {
 
-        //this.titleImage = titleImage;
-        this.titleName = titleName;
-
         // FIXME
+        //this.titleImage = titleImage;
         this.titleImage = R.raw.baseline_broken_image_black_18dp;
+
+        this.titleName = titleName;
     }
 
     public int getTitleImage() {

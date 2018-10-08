@@ -22,11 +22,12 @@
 
         <activity
             android:name=".view.activity.main.MainActivity"
+            android:launchMode= "singleTask"
             android:theme="@style/CustomActionBar"/>
 
         <activity
             android:name=".view.activity.search.SearchActivity"
-            android:theme="@style/CustomActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 
