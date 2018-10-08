@@ -28,6 +28,7 @@ public class SearchActivity extends AppCompatActivity {
 
         LinearLayout linearLayout = findViewById(R.id.search_activity_layout);
         int dp = (int) getResources().getDisplayMetrics().density;
+
         CustomAutoCompleteTextView customAutoCompleteTextView = new CustomAutoCompleteTextView(this, new OnBackPressed() {
             @Override
             public void OnBackPressedCallback() {
