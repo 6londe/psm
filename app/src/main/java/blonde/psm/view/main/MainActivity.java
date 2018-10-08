@@ -14,6 +14,7 @@ public class MainActivity extends BaseActivity {
 
     static SharedPreferences sharedPreferences = null;
     private FragmentManager fragmentManager;
+    private Boolean isGrid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MainActivity extends BaseActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.main_frame, new MainGridFragment());
         fragmentTransaction.commit();
+        isGrid = true;
 
         checkFirstRun();
     }
@@ -55,8 +57,10 @@ public class MainActivity extends BaseActivity {
         sharedPreferences.edit().putInt(VERSION_CODE, currentVersionCode).apply();
     }
 
-    private void switchFragment(boolean isGrid) {
+    @Override
+    public void switchFragment() {
 
+        isGrid = !isGrid;
         Fragment fragment = isGrid ? new MainGridFragment() : new MainListFragment();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.main_frame, fragment);

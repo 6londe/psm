@@ -49,7 +49,7 @@ public class BaseActivity extends AppCompatActivity {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                switchFragment();
             }
         });
     }
@@ -58,4 +58,9 @@ public class BaseActivity extends AppCompatActivity {
     public void onBackPressed() {
 
     }
+
+    public void switchFragment() {
+
+    }
+
 }

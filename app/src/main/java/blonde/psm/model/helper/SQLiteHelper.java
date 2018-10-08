@@ -31,12 +31,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
             "CREATE TABLE " + TABLE_NAME + " ("
-            + KEY_ID + " TEXT PRIMARY KEY, "
             + KEY_PLATFORM + " INTEGER, "
-            + KEY_NAME + " TEXT, "
+            + KEY_NAME + " TEXT PRIMARY KEY, "
             + KEY_GENRE + " INTEGER, "
-            + KEY_PUBLISHER + " TEXT, "
-            + KEY_DATE + " INTEGER "
+            + KEY_PUBLISHER + " TEXT "
             + ")"
         );
     }
@@ -62,8 +60,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                     Platform.values()[cursor.getInt(0)],
                     cursor.getString(1),
                     Genre.values()[cursor.getInt(2)],
-                    cursor.getString(3),
-                    cursor.getInt(4)
+                    cursor.getString(3)
             );
         }
         cursor.close();
@@ -78,12 +75,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             SQLiteDatabase db = this.getWritableDatabase();
 
             ContentValues values = new ContentValues();
-            values.put(KEY_ID, title.get_id());
             values.put(KEY_PLATFORM, title.get_platform().getValue());
             values.put(KEY_NAME, title.get_name());
             values.put(KEY_GENRE, title.get_genre().getValue());
             values.put(KEY_PUBLISHER, title.get_publisher());
-            values.put(KEY_DATE, title.get_date());
 
             db.insert(TABLE_NAME, null, values);
             db.close();
@@ -101,12 +96,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         db.execSQL(
                 "CREATE TABLE " + TABLE_NAME + " ("
-                        + KEY_ID + " TEXT PRIMARY KEY, "
                         + KEY_PLATFORM + " INTEGER, "
-                        + KEY_NAME + " TEXT, "
+                        + KEY_NAME + " TEXT PRIMARY KEY, "
                         + KEY_GENRE + " INTEGER, "
-                        + KEY_PUBLISHER + " TEXT, "
-                        + KEY_DATE + " INTEGER "
+                        + KEY_PUBLISHER + " TEXT "
                         + ")"
         );
         db.close();
