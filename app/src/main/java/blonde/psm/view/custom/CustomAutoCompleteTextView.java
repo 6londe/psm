@@ -54,14 +54,18 @@ public class CustomAutoCompleteTextView extends AppCompatAutoCompleteTextView im
     private void initView() {
 
         Drawable tempClearDrawable = ContextCompat.getDrawable(getContext(), R.drawable.clear_button);
-        clearDrawable = DrawableCompat.wrap(tempClearDrawable);
-        DrawableCompat.setTintList(clearDrawable, getHintTextColors());
-        clearDrawable.setBounds(0, 0, clearDrawable.getIntrinsicWidth(), clearDrawable.getIntrinsicHeight());
+        if(tempClearDrawable != null) {
+            clearDrawable = DrawableCompat.wrap(tempClearDrawable);
+            DrawableCompat.setTintList(clearDrawable, getHintTextColors());
+            clearDrawable.setBounds(0, 0, clearDrawable.getIntrinsicWidth(), clearDrawable.getIntrinsicHeight());
+        }
 
         Drawable tempBackDrawable = ContextCompat.getDrawable(getContext(), R.drawable.back_button);
-        backDrawable = DrawableCompat.wrap(tempBackDrawable);
-        DrawableCompat.setTintList(backDrawable, getTextColors());
-        backDrawable.setBounds(0, 0, backDrawable.getIntrinsicWidth(), backDrawable.getIntrinsicHeight());
+        if (tempBackDrawable != null) {
+            backDrawable = DrawableCompat.wrap(tempBackDrawable);
+            DrawableCompat.setTintList(backDrawable, getTextColors());
+            backDrawable.setBounds(0, 0, backDrawable.getIntrinsicWidth(), backDrawable.getIntrinsicHeight());
+        }
 
         setDrawables(false);
 
@@ -79,6 +83,7 @@ public class CustomAutoCompleteTextView extends AppCompatAutoCompleteTextView im
     }
 
     @Override public boolean onTouch(final View view, final MotionEvent motionEvent) {
+
         final int x = (int) motionEvent.getX();
         if (clearDrawable.isVisible() && x > getWidth() - getPaddingRight() - clearDrawable.getIntrinsicWidth()) {
 
@@ -93,8 +98,12 @@ public class CustomAutoCompleteTextView extends AppCompatAutoCompleteTextView im
             this.onBackPressedCallback.OnBackPressedCallback();
         }
 
-        if (onTouchListener != null) return onTouchListener.onTouch(view, motionEvent);
-        else return false;
+        return onTouchListener != null && onTouchListener.onTouch(view, motionEvent);
+    }
+
+    @Override
+    public boolean performClick() {
+        return super.performClick();
     }
 
     @Override public final void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
