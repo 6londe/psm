@@ -10,27 +10,20 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import blonde.psm.R;
+import blonde.psm.model.helper.FirebaseWrapper;
+import blonde.psm.model.schema.Title;
 
 public class MainGridFragment extends Fragment {
 
-    private ArrayList<Integer> sampleList;
+    private ArrayList<Title> titleArrayList;
     private GridView gridView;
 
     public MainGridFragment() {
 
-        // FIXME Replace sample data
-        sampleList = new ArrayList<>(
-                Arrays.asList(
-                        R.drawable.sample_image_200dp,
-                        R.drawable.sample_image_200dp,
-                        R.drawable.sample_image_200dp,
-                        R.drawable.sample_image_200dp,
-                        R.drawable.sample_image_200dp
-                )
-        );
+        FirebaseWrapper firebaseWrapper = new FirebaseWrapper();
+        titleArrayList = firebaseWrapper.getTitles();
     }
 
     @Override
@@ -38,7 +31,7 @@ public class MainGridFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_gridview, container, false);
 
         gridView = view.findViewById(R.id.main_grid_view);
-        gridView.setAdapter(new MainGridAdapter(getActivity(), sampleList));
+        gridView.setAdapter(new MainGridAdapter(getActivity(), titleArrayList));
 
         return view;
     }

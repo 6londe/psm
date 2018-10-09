@@ -5,33 +5,39 @@ import blonde.psm.model.enums.Platform;
 
 public class Title {
 
-    private Platform _platform;
-    private String _name;
-    private Genre _genre;
-    private String _publisher;
+    private Platform platform;
+    private String name;
+    private Genre genre;
+    private String publisher;
+    private int image;
 
-    public Title(Platform platform, String name, Genre genre, String publisher) {
+    public Title(Platform platform, String name, Genre genre, String publisher, int image) {
 
-        this._platform = platform;
-        this._name = name;
-        this._genre = genre;
-        this._publisher = publisher;
+        this.platform = platform;
+        this.name = name;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.image = image;
     }
 
-    public Platform get_platform() {
-        return _platform;
+    public Platform getPlatform() {
+        return platform;
     }
 
-    public String get_name() {
-        return _name;
+    public String getName() {
+        return name;
     }
 
-    public Genre get_genre() {
-        return _genre;
+    public Genre getGenre() {
+        return genre;
     }
 
-    public String get_publisher() {
-        return _publisher;
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public int getImage() {
+        return image;
     }
 
 }

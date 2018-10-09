@@ -5,21 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import blonde.psm.R;
+import blonde.psm.model.schema.Title;
 
 public class MainGridAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<Integer> titleImageList;
+    private ArrayList<Title> titleImageList;
     private LayoutInflater inflater;
 
-    MainGridAdapter(Context context, ArrayList<Integer> titleImageList) {
+    MainGridAdapter(Context context, ArrayList<Title> titleImageList) {
         this.context = context;
         this.titleImageList = titleImageList;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -41,11 +40,12 @@ public class MainGridAdapter extends BaseAdapter {
 
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.grid_item, parent, false);
-
         }
 
-        ImageView imageView = convertView.findViewById(R.id.grid_image);
-        imageView.setImageDrawable(context.getResources().getDrawable(titleImageList.get(position)));
+        GridImageView imageView = convertView.findViewById(R.id.grid_image);
+        imageView.setImageDrawable(
+                context.getResources().getDrawable(titleImageList.get(position).getImage())
+        );
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +54,7 @@ public class MainGridAdapter extends BaseAdapter {
         });
 
         TextView textView = convertView.findViewById(R.id.grid_text);
-        textView.setText("ASDF");
+        textView.setText(titleImageList.get(position).getName());
 
         return convertView;
     }

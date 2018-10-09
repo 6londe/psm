@@ -2,10 +2,15 @@ package blonde.psm.model.helper;
 
 import java.util.ArrayList;
 
+import blonde.psm.R;
+import blonde.psm.model.enums.Genre;
+import blonde.psm.model.enums.Platform;
+import blonde.psm.model.schema.Title;
 import blonde.psm.view.search.SearchRow;
 
 public class FirebaseWrapper {
 
+    private ArrayList<Title> titles;
     private ArrayList<SearchRow> searchRows;
 
     public FirebaseWrapper() {
@@ -31,9 +36,21 @@ public class FirebaseWrapper {
         searchRows.add(new SearchRow(1, "Life is Strange 2: Episode 1 - Roads"));
         searchRows.add(new SearchRow(1, "Dragon Ball FighterZ: Android 17"));
         searchRows.add(new SearchRow(1, "Perception: Remastered"));
+
+        titles = new ArrayList<>();
+        titles.add(new Title(Platform.PS4, "WWE 2K19", Genre.ACTION, "Sony", R.drawable.ic_broken_image_black_24dp));
+        titles.add(new Title(Platform.PS4, "The Surge: The Good, the Bad, and the Augmented", Genre.ARCADE, "Sony", R.drawable.ic_crop_square_black_24dp));
+        titles.add(new Title(Platform.PS4, "Party Crashers", Genre.BOARDGAME, "Sony", R.drawable.ic_search_black_24dp));
+        titles.add(new Title(Platform.PS4, "ACA NeoGeo: Zupapa!", Genre.FIGHTING, "Sony", R.drawable.ic_settings_black_24dp));
+        titles.add(new Title(Platform.PS4, "Overcooked! 2: Surf 'n' Turf", Genre.MUSIC, "Sony", R.drawable.ic_broken_image_black_24dp));
     }
 
     public ArrayList<SearchRow> getSearchRows() {
         return this.searchRows;
     }
+
+    public ArrayList<Title> getTitles() {
+        return this.titles;
+    }
+
 }
