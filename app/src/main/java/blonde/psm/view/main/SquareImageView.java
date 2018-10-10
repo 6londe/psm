@@ -4,19 +4,19 @@ import android.content.Context;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 
-public class GridImageView extends AppCompatImageView {
+public class SquareImageView extends AppCompatImageView {
 
-    public GridImageView(final Context context)
+    public SquareImageView(final Context context)
     {
         super(context);
     }
 
-    public GridImageView(final Context context, final AttributeSet attrs)
+    public SquareImageView(final Context context, final AttributeSet attrs)
     {
         super(context, attrs);
     }
 
-    public GridImageView(final Context context, final AttributeSet attrs, final int defStyle)
+    public SquareImageView(final Context context, final AttributeSet attrs, final int defStyle)
     {
         super(context, attrs, defStyle);
     }

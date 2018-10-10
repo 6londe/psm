@@ -1,9 +1,11 @@
 package blonde.psm.view.main;
 
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -11,6 +13,7 @@ import java.util.ArrayList;
 
 import blonde.psm.R;
 import blonde.psm.model.schema.Title;
+import blonde.psm.view.detail.DetailDialog;
 
 public class MainGridAdapter extends BaseAdapter {
 
@@ -38,24 +41,41 @@ public class MainGridAdapter extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        final Title currentTitle = titleImageList.get(position);
+
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.grid_item, parent, false);
         }
 
-        GridImageView imageView = convertView.findViewById(R.id.grid_image);
+        SquareImageView imageView = convertView.findViewById(R.id.grid_image);
         imageView.setImageDrawable(
-                context.getResources().getDrawable(titleImageList.get(position).getImage())
+                context.getResources().getDrawable(currentTitle.getImage())
         );
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO
+                showDetailDialog(currentTitle);
             }
         });
 
         TextView textView = convertView.findViewById(R.id.grid_text);
-        textView.setText(titleImageList.get(position).getName());
+        textView.setText(currentTitle.getName());
 
         return convertView;
+    }
+
+    private void showDetailDialog(Title title) {
+
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        int width = displayMetrics.widthPixels * 3 / 4;
+        int height = displayMetrics.heightPixels * 3 / 5;
+
+        DetailDialog detailDialog = new DetailDialog(context, title, width);
+        WindowManager.LayoutParams windowManager = detailDialog.getWindow().getAttributes();
+        windowManager.copyFrom(detailDialog.getWindow().getAttributes());
+        windowManager.width = width;
+        windowManager.height = height;
+
+        detailDialog.show();
     }
 }
