@@ -2,6 +2,7 @@ package blonde.psm.view.search;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +23,10 @@ public class SearchArrayAdapter extends ArrayAdapter<Title> {
     private ArrayList<Title> titleArrayList;
     private Context mContext;
 
-    SearchArrayAdapter(Context context, ArrayList<Title> rows) {
-        super(context, R.layout.search_list, rows);
+    SearchArrayAdapter(Context context, ArrayList<Title> titleArrayList) {
+        super(context, R.layout.search_list, titleArrayList);
         mContext = context;
-        this.titleArrayList = rows;
+        this.titleArrayList = titleArrayList;
     }
 
     @Override
@@ -36,21 +37,26 @@ public class SearchArrayAdapter extends ArrayAdapter<Title> {
 
         final Title currentTitle = titleArrayList.get(position);
 
-        ImageView titleImage = view.findViewById(R.id.row_title_image);
-        if (titleImage != null) titleImage.setImageResource(currentTitle.getImage());
-
         TextView titleName = view.findViewById(R.id.row_title_name);
         if (titleName != null) {
             titleName.setText(currentTitle.getName());
-            titleName.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(mContext, DetailActivity.class);
-                    intent.putExtra("Title", currentTitle);
-                    mContext.startActivity(intent);
-                }
-            });
         }
+
+        //ImageView titleImage = view.findViewById(R.id.row_title_image);
+        //if (titleImage != null) titleImage.setImageResource(currentTitle.getImage());
+        Drawable titleImage = mContext.getResources().getDrawable(currentTitle.getImage());
+        titleImage.setBounds( 0, 0, 40, 40 );
+        titleName.setCompoundDrawables(titleImage, null, null, null);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, DetailActivity.class);
+                intent.putExtra("Title", currentTitle);
+                mContext.startActivity(intent);
+                ((SearchActivity) mContext).hideKeyboard();
+            }
+        });
 
         return view;
     }

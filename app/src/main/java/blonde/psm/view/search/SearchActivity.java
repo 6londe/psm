@@ -31,12 +31,12 @@ public class SearchActivity extends AppCompatActivity {
         SearchAutoCompleteTextView searchAutoCompleteTextView = new SearchAutoCompleteTextView(this, new OnBackPressed() {
             @Override
             public void OnBackPressedCallback() {
-                //hideKeyboard();
+                hideKeyboard();
                 ((Activity) mContext).onBackPressed();
             }
         });
         searchAutoCompleteTextView.setBackground(getResources().getDrawable(R.drawable.custom_search_bar));
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 40*dp);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 50*dp);
         layoutParams.setMargins(10*dp, 15*dp, 10*dp, 10*dp);
         searchAutoCompleteTextView.setLayoutParams(layoutParams);
         searchAutoCompleteTextView.setPadding(10*dp, 5*dp, 10*dp, 5*dp);
@@ -49,7 +49,7 @@ public class SearchActivity extends AppCompatActivity {
         searchAutoCompleteTextView.setAdapter(new SearchArrayAdapter(this, firebaseWrapper.getTitles()));
         searchAutoCompleteTextView.requestFocus();
 
-        //showKeyboard();
+        showKeyboard();
     }
 
     public void showKeyboard() {

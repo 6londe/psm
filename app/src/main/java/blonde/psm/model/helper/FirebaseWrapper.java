@@ -38,11 +38,11 @@ public class FirebaseWrapper {
         searchRows.add(new SearchRow(1, "Perception: Remastered"));
 
         titles = new ArrayList<>();
-        titles.add(new Title(Platform.PS4, "WWE 2K19", Genre.ACTION, "Sony", R.drawable.ic_broken_image_black_24dp));
-        titles.add(new Title(Platform.PS4, "The Surge: The Good, the Bad, and the Augmented", Genre.ARCADE, "Sony", R.drawable.ic_crop_square_black_24dp));
-        titles.add(new Title(Platform.PS4, "Party Crashers", Genre.BOARDGAME, "Sony", R.drawable.ic_search_black_24dp));
-        titles.add(new Title(Platform.PS4, "ACA NeoGeo: Zupapa!", Genre.FIGHTING, "Sony", R.drawable.ic_settings_black_24dp));
-        titles.add(new Title(Platform.PS4, "Overcooked! 2: Surf 'n' Turf", Genre.MUSIC, "Sony", R.drawable.ic_broken_image_black_24dp));
+        titles.add(new Title(Platform.PS4, "WWE 2K19", Genre.ACTION, "Sony", R.drawable.sample_title));
+        titles.add(new Title(Platform.PS4, "The Surge: The Good, the Bad, and the Augmented", Genre.ARCADE, "Sony", R.drawable.sample_title2));
+        titles.add(new Title(Platform.PS4, "Party Crashers", Genre.BOARDGAME, "Sony", R.drawable.sample_title2));
+        titles.add(new Title(Platform.PS4, "ACA NeoGeo: Zupapa!", Genre.FIGHTING, "Sony", R.drawable.sample_title));
+        titles.add(new Title(Platform.PS4, "Overcooked! 2: Surf 'n' Turf", Genre.MUSIC, "Sony", R.drawable.sample_title));
     }
 
     public ArrayList<SearchRow> getSearchRows() {
