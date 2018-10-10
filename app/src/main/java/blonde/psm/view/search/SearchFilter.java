@@ -4,12 +4,14 @@ import android.widget.Filter;
 
 import java.util.ArrayList;
 
+import blonde.psm.model.schema.Title;
+
 public class SearchFilter extends Filter {
 
     private SearchArrayAdapter searchArrayAdapter;
-    private ArrayList<SearchRow> filteredRows, unfilteredRows;
+    private ArrayList<Title> filteredRows, unfilteredRows;
 
-    SearchFilter(SearchArrayAdapter searchArrayAdapter, ArrayList<SearchRow> rows) {
+    SearchFilter(SearchArrayAdapter searchArrayAdapter, ArrayList<Title> rows) {
         this.searchArrayAdapter = searchArrayAdapter;
         this.filteredRows = new ArrayList<>(rows);
         this.unfilteredRows = new ArrayList<>(rows);
@@ -17,21 +19,21 @@ public class SearchFilter extends Filter {
 
     @Override
     public CharSequence convertResultToString(Object resultValue) {
-        SearchRow sr = (SearchRow) resultValue;
-        return sr.getTitleName();
+        Title title = (Title) resultValue;
+        return title.getName();
     }
 
     @SuppressWarnings("unchecked")
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
 
-        ArrayList<SearchRow> filteredList = (ArrayList<SearchRow>) results.values;
+        ArrayList<Title> filteredList = (ArrayList<Title>) results.values;
 
         if (results.count > 0) {
             searchArrayAdapter.clear();
 
-            for (SearchRow sr : filteredList) {
-                searchArrayAdapter.add(sr);
+            for (Title t : filteredList) {
+                searchArrayAdapter.add(t);
             }
             searchArrayAdapter.notifyDataSetChanged();
         }
@@ -50,9 +52,9 @@ public class SearchFilter extends Filter {
 
             filteredRows.clear();
 
-            for (SearchRow sr : unfilteredRows) {
-                if (sr.getTitleName().toLowerCase().startsWith(constraint.toString().toLowerCase())) {
-                    filteredRows.add(sr);
+            for (Title t : unfilteredRows) {
+                if (t.getName().toLowerCase().startsWith(constraint.toString().toLowerCase())) {
+                    filteredRows.add(t);
                 }
             }
             filterResults.values = filteredRows;

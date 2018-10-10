@@ -31,7 +31,7 @@ public class SearchActivity extends AppCompatActivity {
         SearchAutoCompleteTextView searchAutoCompleteTextView = new SearchAutoCompleteTextView(this, new OnBackPressed() {
             @Override
             public void OnBackPressedCallback() {
-                hideKeyboard();
+                //hideKeyboard();
                 ((Activity) mContext).onBackPressed();
             }
         });
@@ -46,10 +46,10 @@ public class SearchActivity extends AppCompatActivity {
         searchAutoCompleteTextView.setCompoundDrawablePadding(10*dp);
         linearLayout.addView(searchAutoCompleteTextView);
 
-        searchAutoCompleteTextView.setAdapter(new SearchArrayAdapter(this, firebaseWrapper.getSearchRows()));
+        searchAutoCompleteTextView.setAdapter(new SearchArrayAdapter(this, firebaseWrapper.getTitles()));
         searchAutoCompleteTextView.requestFocus();
 
-        showKeyboard();
+        //showKeyboard();
     }
 
     public void showKeyboard() {
