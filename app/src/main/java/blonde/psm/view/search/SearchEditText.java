@@ -4,14 +4,10 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
-import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.support.v7.widget.AppCompatEditText;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
 
 import blonde.psm.R;
 
@@ -54,14 +50,14 @@ public class SearchEditText extends AppCompatEditText implements View.OnTouchLis
 
     private void initView() {
 
-        Drawable tempClearDrawable = ContextCompat.getDrawable(getContext(), R.drawable.clear_button);
+        Drawable tempClearDrawable = ContextCompat.getDrawable(getContext(), R.drawable.button_clear_24dp);
         if(tempClearDrawable != null) {
             clearDrawable = DrawableCompat.wrap(tempClearDrawable);
             DrawableCompat.setTintList(clearDrawable, getHintTextColors());
             clearDrawable.setBounds(0, 0, clearDrawable.getIntrinsicWidth(), clearDrawable.getIntrinsicHeight());
         }
 
-        Drawable tempBackDrawable = ContextCompat.getDrawable(getContext(), R.drawable.back_button);
+        Drawable tempBackDrawable = ContextCompat.getDrawable(getContext(), R.drawable.button_back_24dp);
         if (tempBackDrawable != null) {
             backDrawable = DrawableCompat.wrap(tempBackDrawable);
             DrawableCompat.setTintList(backDrawable, getTextColors());

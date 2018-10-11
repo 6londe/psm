@@ -49,6 +49,7 @@ public class SearchActivity extends AppCompatActivity {
         searchEditText.setMaxLines(1);
         searchEditText.setSingleLine();
         searchEditText.setCompoundDrawablePadding(10*dp);
+        searchEditText.setHint("Search");
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

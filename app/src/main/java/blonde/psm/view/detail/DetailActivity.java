@@ -1,34 +1,31 @@
 package blonde.psm.view.detail;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import blonde.psm.R;
 import blonde.psm.model.schema.Title;
 import blonde.psm.view.main.SquareImageView;
-import blonde.psm.view.search.SearchActivity;
 
 public class DetailActivity extends AppCompatActivity {
 
     private SquareImageView titleImage;
     private TextView titleName, titlePublisher, titleGenre, titlePlatform;
     private ImageView backButton;
-    private Activity context;
+    private Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        context = this;
+        activity = this;
         Intent intent = getIntent();
         Title title = intent.getParcelableExtra("Title");
 
@@ -52,7 +49,7 @@ public class DetailActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.onBackPressed();
+                activity.onBackPressed();
             }
         });
     }

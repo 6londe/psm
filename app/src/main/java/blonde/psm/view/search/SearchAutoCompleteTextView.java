@@ -12,7 +12,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import blonde.psm.R;
-import blonde.psm.view.search.SearchActivity;
 
 public class SearchAutoCompleteTextView extends AppCompatAutoCompleteTextView implements TextWatcher, View.OnTouchListener, View.OnFocusChangeListener {
 
@@ -53,14 +52,14 @@ public class SearchAutoCompleteTextView extends AppCompatAutoCompleteTextView im
 
     private void initView() {
 
-        Drawable tempClearDrawable = ContextCompat.getDrawable(getContext(), R.drawable.clear_button);
+        Drawable tempClearDrawable = ContextCompat.getDrawable(getContext(), R.drawable.button_clear_24dp);
         if(tempClearDrawable != null) {
             clearDrawable = DrawableCompat.wrap(tempClearDrawable);
             DrawableCompat.setTintList(clearDrawable, getHintTextColors());
             clearDrawable.setBounds(0, 0, clearDrawable.getIntrinsicWidth(), clearDrawable.getIntrinsicHeight());
         }
 
-        Drawable tempBackDrawable = ContextCompat.getDrawable(getContext(), R.drawable.back_button);
+        Drawable tempBackDrawable = ContextCompat.getDrawable(getContext(), R.drawable.button_back_24dp);
         if (tempBackDrawable != null) {
             backDrawable = DrawableCompat.wrap(tempBackDrawable);
             DrawableCompat.setTintList(backDrawable, getTextColors());
