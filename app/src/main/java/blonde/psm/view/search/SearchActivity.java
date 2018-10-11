@@ -19,14 +19,14 @@ public class SearchActivity extends AppCompatActivity {
 
     private SearchArrayAdapter searchArrayAdapter;
     private FirebaseWrapper firebaseWrapper;
-    private Context mContext;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        mContext = this;
+        context = this;
         firebaseWrapper = new FirebaseWrapper();
         searchArrayAdapter = new SearchArrayAdapter(this, firebaseWrapper.getTitles());
         searchArrayAdapter.clear();
@@ -38,7 +38,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void OnBackPressedCallback() {
                 hideKeyboard();
-                ((Activity) mContext).onBackPressed();
+                ((Activity) context).onBackPressed();
             }
         });
         searchEditText.setBackground(getResources().getDrawable(R.drawable.custom_search_bar));
@@ -76,6 +76,8 @@ public class SearchActivity extends AppCompatActivity {
         LinearLayout.LayoutParams listViewLayoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         listViewLayoutParams.setMargins(10*dp, 10*dp, 10*dp, 10*dp);
         listView.setLayoutParams(listViewLayoutParams);
+        listView.setDivider(null);
+        listView.setDividerHeight(0);
         listView.setAdapter(searchArrayAdapter);
         linearLayout.addView(listView);
 

@@ -2,6 +2,7 @@ package blonde.psm.view.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,11 +47,11 @@ public class MainGridAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.grid_item, parent, false);
         }
 
-        SquareImageView imageView = convertView.findViewById(R.id.grid_image);
-        imageView.setImageDrawable(
+        final SquareImageView gridImage = convertView.findViewById(R.id.grid_image);
+        gridImage.setImageDrawable(
                 mContext.getResources().getDrawable(currentTitle.getImage())
         );
-        imageView.setOnClickListener(new View.OnClickListener() {
+        gridImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, DetailActivity.class);
@@ -59,8 +60,10 @@ public class MainGridAdapter extends BaseAdapter {
             }
         });
 
-        TextView textView = convertView.findViewById(R.id.grid_text);
-        textView.setText(currentTitle.getName());
+        final TextView gridText = convertView.findViewById(R.id.grid_text);
+        gridText.setText(currentTitle.getName());
+        gridText.setBackground(mContext.getResources().getDrawable(R.drawable.gradient_title_color));
+        gridText.setTextColor(Color.WHITE);
 
         return convertView;
     }

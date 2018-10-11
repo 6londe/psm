@@ -1,45 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    android:orientation="vertical">
-
-    <!--
-    <TextView
-        android:id="@+id/row_title_name"
-        android:drawableStart="@drawable/ic_broken_image_black_24dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-    -->
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:gravity="start"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:orientation="horizontal">
 
-        <blonde.psm.view.main.SquareImageView
-            android:id="@+id/row_title_image"
-            android:layout_width="40dp"
+        <android.support.v7.widget.CardView
+            android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_broken_image_black_24dp" />
+            app:cardElevation="10dp"
+            app:cardCornerRadius="10dp">
 
-        <TextView
-            android:id="@+id/row_title_name"
+            <blonde.psm.view.main.SquareImageView
+                android:id="@+id/row_title_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_broken_image_black_24dp" />
+
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:orientation="vertical"
             android:gravity="center_vertical"
             android:layout_weight="1"
-            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="5dp" />
+            android:layout_width="0dp"
+            android:layout_marginStart="5dp">
+
+            <TextView
+                android:id="@+id/row_title_name"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/row_title_publisher"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
     </LinearLayout>
 
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:background="@android:color/transparent"
+        android:layout_height="5dp"
+        android:layout_width="match_parent" />
 
 </LinearLayout>

@@ -41,6 +41,9 @@ public class SearchArrayAdapter extends ArrayAdapter<Title> {
         TextView titleName = view.findViewById(R.id.row_title_name);
         if (titleName != null) titleName.setText(currentTitle.getName());
 
+        TextView titlePublisher = view.findViewById(R.id.row_title_publisher);
+        if (titlePublisher != null) titlePublisher.setText(currentTitle.getPublisher());
+
         SquareImageView titleImage = view.findViewById(R.id.row_title_image);
         if (titleImage != null) titleImage.setImageResource(currentTitle.getImage());
 

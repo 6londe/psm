@@ -102,21 +102,6 @@ public class SearchEditText extends AppCompatEditText implements View.OnTouchLis
         return onTouchListener != null && onTouchListener.onTouch(view, motionEvent);
     }
 
-    /*
-    @Override public final void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
-
-        if (isFocused()) setDrawables(s.length() > 0);
-    }
-
-    @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-    }
-
-    @Override public void afterTextChanged(Editable s) {
-
-    }
-    */
-
     public void setDrawables(boolean isClearIconVisible) {
         clearDrawable.setVisible(isClearIconVisible, false);
         setCompoundDrawables(backDrawable, null, isClearIconVisible ? clearDrawable : null, null);
