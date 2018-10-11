@@ -2,14 +2,12 @@ package blonde.psm.view.search;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,16 +15,19 @@ import java.util.ArrayList;
 import blonde.psm.R;
 import blonde.psm.model.schema.Title;
 import blonde.psm.view.detail.DetailActivity;
+import blonde.psm.view.main.SquareImageView;
 
 public class SearchArrayAdapter extends ArrayAdapter<Title> {
 
     private ArrayList<Title> titleArrayList;
-    private Context mContext;
+    private Context context;
+    private SearchFilter searchFilter;
 
     SearchArrayAdapter(Context context, ArrayList<Title> titleArrayList) {
         super(context, R.layout.search_list, titleArrayList);
-        mContext = context;
+        this.context = context;
         this.titleArrayList = titleArrayList;
+        this.searchFilter = new SearchFilter(this, titleArrayList);
     }
 
     @Override
@@ -38,23 +39,18 @@ public class SearchArrayAdapter extends ArrayAdapter<Title> {
         final Title currentTitle = titleArrayList.get(position);
 
         TextView titleName = view.findViewById(R.id.row_title_name);
-        if (titleName != null) {
-            titleName.setText(currentTitle.getName());
-        }
+        if (titleName != null) titleName.setText(currentTitle.getName());
 
-        //ImageView titleImage = view.findViewById(R.id.row_title_image);
-        //if (titleImage != null) titleImage.setImageResource(currentTitle.getImage());
-        Drawable titleImage = mContext.getResources().getDrawable(currentTitle.getImage());
-        titleImage.setBounds( 0, 0, 40, 40 );
-        titleName.setCompoundDrawables(titleImage, null, null, null);
+        SquareImageView titleImage = view.findViewById(R.id.row_title_image);
+        if (titleImage != null) titleImage.setImageResource(currentTitle.getImage());
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, DetailActivity.class);
+                Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra("Title", currentTitle);
-                mContext.startActivity(intent);
-                ((SearchActivity) mContext).hideKeyboard();
+                context.startActivity(intent);
+                ((SearchActivity) context).hideKeyboard();
             }
         });
 
@@ -63,7 +59,7 @@ public class SearchArrayAdapter extends ArrayAdapter<Title> {
 
     @Override
     public @NonNull Filter getFilter() {
-        return new SearchFilter(this, titleArrayList);
+        return this.searchFilter;
     }
 
 }

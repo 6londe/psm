@@ -11,10 +11,10 @@ public class SearchFilter extends Filter {
     private SearchArrayAdapter searchArrayAdapter;
     private ArrayList<Title> filteredRows, unfilteredRows;
 
-    SearchFilter(SearchArrayAdapter searchArrayAdapter, ArrayList<Title> rows) {
+    SearchFilter(SearchArrayAdapter searchArrayAdapter, ArrayList<Title> titleArrayList) {
         this.searchArrayAdapter = searchArrayAdapter;
-        this.filteredRows = new ArrayList<>(rows);
-        this.unfilteredRows = new ArrayList<>(rows);
+        this.filteredRows = new ArrayList<>(titleArrayList);
+        this.unfilteredRows = new ArrayList<>(titleArrayList);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class SearchFilter extends Filter {
 
         FilterResults filterResults = new FilterResults();
 
-        if (constraint != null) {
+        if (constraint != null && constraint.length() > 0) {
 
             filteredRows.clear();
 

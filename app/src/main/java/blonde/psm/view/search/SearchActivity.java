@@ -4,16 +4,20 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import blonde.psm.R;
 import blonde.psm.model.helper.FirebaseWrapper;
 
 public class SearchActivity extends AppCompatActivity {
 
+    private SearchArrayAdapter searchArrayAdapter;
     private FirebaseWrapper firebaseWrapper;
     private Context mContext;
 
@@ -24,30 +28,56 @@ public class SearchActivity extends AppCompatActivity {
 
         mContext = this;
         firebaseWrapper = new FirebaseWrapper();
+        searchArrayAdapter = new SearchArrayAdapter(this, firebaseWrapper.getTitles());
+        searchArrayAdapter.clear();
 
         LinearLayout linearLayout = findViewById(R.id.search_activity_layout);
         int dp = (int) getResources().getDisplayMetrics().density;
 
-        SearchAutoCompleteTextView searchAutoCompleteTextView = new SearchAutoCompleteTextView(this, new OnBackPressed() {
+        final SearchEditText searchEditText = new SearchEditText(this, new OnBackPressed() {
             @Override
             public void OnBackPressedCallback() {
                 hideKeyboard();
                 ((Activity) mContext).onBackPressed();
             }
         });
-        searchAutoCompleteTextView.setBackground(getResources().getDrawable(R.drawable.custom_search_bar));
+        searchEditText.setBackground(getResources().getDrawable(R.drawable.custom_search_bar));
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 50*dp);
         layoutParams.setMargins(10*dp, 15*dp, 10*dp, 10*dp);
-        searchAutoCompleteTextView.setLayoutParams(layoutParams);
-        searchAutoCompleteTextView.setPadding(10*dp, 5*dp, 10*dp, 5*dp);
-        searchAutoCompleteTextView.setMaxLines(1);
-        searchAutoCompleteTextView.setSingleLine();
-        searchAutoCompleteTextView.setThreshold(1);
-        searchAutoCompleteTextView.setCompoundDrawablePadding(10*dp);
-        linearLayout.addView(searchAutoCompleteTextView);
+        searchEditText.setLayoutParams(layoutParams);
+        searchEditText.setPadding(10*dp, 5*dp, 10*dp, 5*dp);
+        searchEditText.setMaxLines(1);
+        searchEditText.setSingleLine();
+        searchEditText.setCompoundDrawablePadding(10*dp);
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-        searchAutoCompleteTextView.setAdapter(new SearchArrayAdapter(this, firebaseWrapper.getTitles()));
-        searchAutoCompleteTextView.requestFocus();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if (searchEditText.isFocused()) {
+                    searchEditText.setDrawables(charSequence.length() > 0);
+                }
+                searchArrayAdapter.getFilter().filter(charSequence);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        linearLayout.addView(searchEditText);
+        searchEditText.requestFocus();
+
+        ListView listView = new ListView(this);
+        LinearLayout.LayoutParams listViewLayoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        listViewLayoutParams.setMargins(10*dp, 10*dp, 10*dp, 10*dp);
+        listView.setLayoutParams(listViewLayoutParams);
+        listView.setAdapter(searchArrayAdapter);
+        linearLayout.addView(listView);
 
         showKeyboard();
     }
