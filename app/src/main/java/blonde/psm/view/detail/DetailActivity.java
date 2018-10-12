@@ -3,7 +3,6 @@ package blonde.psm.view.detail;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,9 +10,10 @@ import android.widget.TextView;
 
 import blonde.psm.R;
 import blonde.psm.model.schema.Title;
+import blonde.psm.view.base.BaseActivity;
 import blonde.psm.view.main.SquareImageView;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends BaseActivity {
 
     private SquareImageView titleImage;
     private TextView titleName, titlePublisher, titleGenre, titlePlatform;

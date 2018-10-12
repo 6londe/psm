@@ -3,7 +3,6 @@ package blonde.psm.view.search;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -14,8 +13,9 @@ import android.widget.ListView;
 
 import blonde.psm.R;
 import blonde.psm.model.helper.FirebaseWrapper;
+import blonde.psm.view.base.BaseActivity;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends BaseActivity {
 
     private SearchArrayAdapter searchArrayAdapter;
     private FirebaseWrapper firebaseWrapper;
