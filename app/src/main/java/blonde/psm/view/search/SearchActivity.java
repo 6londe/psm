@@ -86,9 +86,9 @@ public class SearchActivity extends BaseActivity {
         emptyView = new TextView(this);
         LinearLayout.LayoutParams emptyViewLayoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         emptyViewLayoutParams.setMargins(10*dp, 40*dp, 10*dp, 10*dp);
-        emptyView.setPadding(10*dp, 5*dp, 10*dp, 5*dp);
+        emptyView.setPadding(13*dp, 5*dp, 13*dp, 5*dp);
         emptyView.setLayoutParams(emptyViewLayoutParams);
-        emptyView.setText(" Add New + ");
+        emptyView.setText(getResources().getString(R.string.search_add_button));
         emptyView.setTextColor(getResources().getColor(R.color.colorAccent));
         emptyView.setBackground(getDrawable(R.drawable.custom_rounded_button));
         emptyView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -96,7 +96,7 @@ public class SearchActivity extends BaseActivity {
         emptyView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
             }
         });
 
