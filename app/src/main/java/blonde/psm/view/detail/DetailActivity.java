@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ public class DetailActivity extends BaseActivity {
     private SquareImageView titleImage;
     private TextView titleName, titlePublisher, titleGenre, titlePlatform;
     private ImageView backButton;
+    private Button editButton;
     private Activity activity;
 
     @Override
@@ -50,6 +52,14 @@ public class DetailActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 activity.onBackPressed();
+            }
+        });
+
+        editButton = findViewById(R.id.detail_edit_button);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }

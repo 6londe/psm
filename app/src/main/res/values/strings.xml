@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">PSM</string>
 
+    <string name="detail_edit_button">EDIT</string>
+    <string name="search_edittext_hint">Search</string>
+
 </resources>
