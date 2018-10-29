@@ -1,61 +1,81 @@
 package blonde.psm.model.schema;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import blonde.psm.model.enums.Genre;
 import blonde.psm.model.enums.Platform;
 
-public class Title {
+public class Title implements Parcelable {
 
-    private String _id;
-    private Platform _platform;
-    private String _name;
-    private Genre _genre;
-    private String _publisher;
-    private int _date;
+    private Platform platform;
+    private String name;
+    private Genre genre;
+    private String publisher;
+    private int image;
 
-    public Title(Platform platform, String name, Genre genre, String publisher, int date) {
+    public Title(Platform platform, String name, Genre genre, String publisher, int image) {
 
-        this._platform = platform;
-        this._name = name;
-        this._genre = genre;
-        this._publisher = publisher;
-        this._date = date;
-        this._id = getTitleId(this);
+        this.platform = platform;
+        this.name = name;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.image = image;
     }
 
-    public static String getTitleId(Title title) {
-
-        // FIXME id creation logic
-        return ""
-                + title._platform
-                + title._name.charAt(0)
-                + title._name.charAt(title.get_name().length() - 1)
-                + title._genre
-                + title._publisher.charAt(0)
-                + title._date;
+    private Title(Parcel parcel) {
+        platform = Platform.values()[parcel.readInt()];
+        name = parcel.readString();
+        genre = Genre.values()[parcel.readInt()];
+        publisher = parcel.readString();
+        image = parcel.readInt();
     }
 
-    public String get_id() {
-        return _id;
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(platform.getValue());
+        parcel.writeString(name);
+        parcel.writeInt(genre.getValue());
+        parcel.writeString(publisher);
+        parcel.writeInt(image);
     }
 
-    public Platform get_platform() {
-        return _platform;
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public String get_name() {
-        return _name;
+    public static final Parcelable.Creator<Title> CREATOR = new Parcelable.Creator<Title>() {
+
+        @Override
+        public Title createFromParcel(Parcel parcel) {
+            return new Title(parcel);
+        }
+
+        @Override
+        public Title[] newArray(int size) {
+            return new Title[size];
+        }
+    };
+
+    public Platform getPlatform() {
+        return platform;
     }
 
-    public Genre get_genre() {
-        return _genre;
+    public String getName() {
+        return name;
     }
 
-    public String get_publisher() {
-        return _publisher;
+    public Genre getGenre() {
+        return genre;
     }
 
-    public int get_date() {
-        return _date;
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public int getImage() {
+        return image;
     }
 
 }

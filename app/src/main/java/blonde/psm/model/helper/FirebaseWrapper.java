@@ -2,38 +2,38 @@ package blonde.psm.model.helper;
 
 import java.util.ArrayList;
 
-import blonde.psm.view.activity.search.SearchRow;
+import blonde.psm.R;
+import blonde.psm.model.enums.Genre;
+import blonde.psm.model.enums.Platform;
+import blonde.psm.model.schema.Title;
 
 public class FirebaseWrapper {
 
-    private ArrayList<SearchRow> titles;
+    private ArrayList<Title> titles;
 
     public FirebaseWrapper() {
 
         titles = new ArrayList<>();
-        titles.add(new SearchRow(1, "WWE 2K19"));
-        titles.add(new SearchRow(1, "The Midnight Sanctuary"));
-        titles.add(new SearchRow(1, "Party Crashers"));
-        titles.add(new SearchRow(1, "ACA NeoGeo: Zupapa!"));
-        titles.add(new SearchRow(1, "Overcooked! 2: Surf 'n' Turf"));
-        titles.add(new SearchRow(1, "Mega Man 11"));
-        titles.add(new SearchRow(1, "Astro Bot: Rescue Mission"));
-        titles.add(new SearchRow(1, "Assassin's Creed Odyssey"));
-        titles.add(new SearchRow(1, "Fist of the North Star: Lost Paradise"));
-        titles.add(new SearchRow(1, "Valthirian Arc: Hero School Story"));
-        titles.add(new SearchRow(1, "The Surge: The Good, the Bad, and the Augmented"));
-        titles.add(new SearchRow(1, "Racket Fury: Table Tennis VR"));
-        titles.add(new SearchRow(1, "The Sims 4: Spooky Stuff"));
-        titles.add(new SearchRow(1, "Pilot Sports"));
-        titles.add(new SearchRow(1, "Catastronauts"));
-        titles.add(new SearchRow(1, "Life is Strange 2"));
-        titles.add(new SearchRow(1, "Dragon Ball FighterZ: Cooler"));
-        titles.add(new SearchRow(1, "Life is Strange 2: Episode 1 - Roads"));
-        titles.add(new SearchRow(1, "Dragon Ball FighterZ: Android 17"));
-        titles.add(new SearchRow(1, "Perception: Remastered"));
+        titles.add(new Title(Platform.PS4, "WWE 2K19", Genre.SPORTS, "Full Game", R.drawable.sample_wwe_2k19));
+        titles.add(new Title(Platform.PS4, "The Surge: The Good, the Bad, and the Augmented", Genre.SHOOTER, "Focus Home Interactive", R.drawable.sample_the_surge_the_good_the_bad_and_the_augmented));
+        titles.add(new Title(Platform.PS4, "Party Crashers", Genre.ARCADE, "PSN Game", R.drawable.sample_party_crashers));
+        titles.add(new Title(Platform.PS4, "ACA NEOGEO BURNING FIGHT", Genre.ARCADE, "HAMSTER Corporation", R.drawable.sample_aca_neogeo_burning_fight));
+        titles.add(new Title(Platform.PS4, "Overcooked! 2: Surf 'n' Turf", Genre.SIMULATION, "Team17 Software Ltd.", R.drawable.sample_overcooked_2_surf_n_turf));
+        titles.add(new Title(Platform.PS4, "Mega Man 11", Genre.ACTION, "Capcom U.S.A., Inc.", R.drawable.sample_mega_man_11));
+        titles.add(new Title(Platform.VR, "Astro Bot: Rescue Mission", Genre.ADVENTURE, "Sony Interactive Entertainment", R.drawable.sample_astro_bot_rescue_mission));
+        titles.add(new Title(Platform.PS4, "Assassin's Creed Odyssey", Genre.FIGHTING, "Ubisoft Entertainment", R.drawable.sample_assassins_creed_odyssey));
+        titles.add(new Title(Platform.PS4, "Fist of the North Star: Lost Paradise", Genre.ACTION, "Sega of America Inc.", R.drawable.sample_fist_of_the_north_star_lost_paradise));
+        titles.add(new Title(Platform.PS4, "Valthirian Arc: Hero School Story", Genre.ACTION, "PQUBE LTD", R.drawable.sample_valthirian_arc_hero_school_story));
+        titles.add(new Title(Platform.PS4, "The Sims 4: Spooky Stuff", Genre.SIMULATION, "Electronic Arts Inc", R.drawable.sample_the_sims_4_spooky_stuff));
+        titles.add(new Title(Platform.PS4, "Pilot Sports", Genre.SPORTS, "EuroVideo Medien GmbH", R.drawable.sample_pilot_sports));
+        titles.add(new Title(Platform.PS4, "Catastronauts", Genre.ACTION, "INERTIASOFT LIMITED", R.drawable.sample_catastronauts));
+        titles.add(new Title(Platform.PS4, "Life is Strange 2", Genre.ADVENTURE, "SQUARE ENIX CO. LTD.", R.drawable.sample_life_is_strange_2));
+        titles.add(new Title(Platform.PS4, "DRAGON BALL FIGHTERZ - Goku", Genre.FIGHTING, "BANDAI NAMCO Entertainment America Inc.", R.drawable.sample_dragon_ball_fighterz_goku));
+        titles.add(new Title(Platform.PS4, "Perception: Remastered", Genre.ADVENTURE, "The Deep End Games", R.drawable.sample_perception_remastered));
     }
 
-    public ArrayList<SearchRow> getSearchRows() {
+    public ArrayList<Title> getTitles() {
         return this.titles;
     }
+
 }

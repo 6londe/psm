@@ -1,4 +1,4 @@
-package blonde.psm.view.activity;
+package blonde.psm.view.splash;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -6,9 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import blonde.psm.R;
-import blonde.psm.view.activity.main.MainActivity;
+import blonde.psm.view.base.BaseActivity;
+import blonde.psm.view.main.MainActivity;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
     private static final int SPLASH_TIMEOUT = 800;
 

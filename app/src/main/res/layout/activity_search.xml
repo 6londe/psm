@@ -2,38 +2,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/search_activity_layout"
     android:padding="10dp"
     android:orientation="vertical"
     android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.search.SearchActivity">
-
-    <AutoCompleteTextView
-        android:id="@+id/title_search"
-        android:background="@drawable/custom_search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="15dp"
-        android:padding="5dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:completionThreshold="1" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:text="asdf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
+    tools:mContext=".view.search.SearchActivity">
 
 </LinearLayout>
